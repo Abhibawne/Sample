@@ -22,6 +22,7 @@ public class HowHnadleMultipleWindow {
 
 		// open new window
 		driver.findElement(By.xpath("//button[@id='windowButton']")).click();
+
 		// to handle all new opened window
 		Set<String> WindowHnadle = driver.getWindowHandles();
 
@@ -31,13 +32,13 @@ public class HowHnadleMultipleWindow {
 				driver.manage().window().maximize();
 				Thread.sleep(1000);
 				System.out.println(driver.findElement(By.xpath("//h1[@id='sampleHeading']")).getText());
-				driver.close(); //will close child window
+				driver.close(); // will close child window
 			}
 		}
 		driver.switchTo().window(mainwindow);
 		driver.findElement(By.xpath("//button[@id='tabButton']")).click();
-		//driver.close(); //will close main window
-		//driver.quit(); //will close all window
+		// driver.close(); //will close main window
+		// driver.quit(); //will close all window
 	}
 
 }

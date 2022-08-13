@@ -1,5 +1,7 @@
 package testcase1;
 
+import static org.testng.Assert.assertEquals;
+
 import java.time.Duration;
 
 import org.apache.log4j.Logger;
@@ -10,11 +12,12 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class ActionsClass {
 
-	static Logger log = Logger.getLogger(ActionsClass.class);
+	 static Logger log = Logger.getLogger(ActionsClass.class);
 
 	@Test
 	public void AdvanceActions() {
@@ -26,6 +29,7 @@ public class ActionsClass {
 		WebDriver driver = new ChromeDriver();
 		log.info("before open google.com");
 		driver.get("https://www.google.com/");
+		Assert.assertEquals(driver.getTitle(), "amazon");
 		log.info("after open google.com");
 		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
@@ -38,7 +42,7 @@ public class ActionsClass {
 		element = driver.findElement(By.xpath("//input[@title='Search']"));
 		actions.keyDown(element, Keys.SHIFT).sendKeys("A").keyUp(Keys.SHIFT).build().perform();
 		actions.contextClick(element).build().perform();
-
+		//actions.keyDown(element, Keys.ALT).clickAndHold().keyUp(Keys.ALT).build().perform();
 	}
 
 }

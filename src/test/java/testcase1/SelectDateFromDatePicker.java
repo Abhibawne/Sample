@@ -24,14 +24,16 @@ public class SelectDateFromDatePicker {
 		mainPage.getUserNameTextBox().sendKeys("user1");
  
 		mainPage.setLastNameTextBox();
-		mainPage.getLastNameTextBox().sendKeys("userlastname");
+		//mainPage.getLastNameTextBox().sendKeys("userlastname"); //we pass text by using javascriptexecutor see below
 
 		mainPage.setMaleRadioButton();
 		System.out.println("before male button selected" +mainPage.getMaleRadioButton().isSelected());
 		// creating the JavascriptExecutor interface object by type casting of webdriver
 		JavascriptExecutor executor = (JavascriptExecutor) driver;
-		executor.executeScript("arguments[0].click();", mainPage.getMaleRadioButton());
+		//send text by using javascriptExecutor
+		executor.executeScript("arguments[0].value='userlastname';", mainPage.getLastNameTextBox());
 		
+		executor.executeScript("arguments[0].click();", mainPage.getMaleRadioButton());
 		System.out.println("After male button selected" +mainPage.getMaleRadioButton().isSelected());
 		System.out.println("is displayed" +mainPage.getMaleRadioButton().isDisplayed());
 		
